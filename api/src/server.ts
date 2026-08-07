@@ -1,0 +1,13 @@
+import express from 'express';
+import { healthRoutes } from './presentation/routes/health.routes';
+import { authRoutes } from './presentation/routes/auth.routes';
+
+const app = express();
+const PORT = 3333;
+
+app.use(express.json());
+app.use("/health", healthRoutes);
+app.use("/auth", authRoutes);
+app.listen(PORT,() => {
+    console.log(`API rodando em http://localhost:${PORT}`)
+})
