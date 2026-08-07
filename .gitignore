@@ -30,3 +30,13 @@ next-env.d.ts
 
 # guia local de estudo (não versionar)
 STUDIO_BLOOM_GUIA.md
+
+# skills / tooling de IDE e agentes (não fazem parte do app)
+.windsurf/
+**/.windsurf/
+.agents/
+**/.agents/
+.claude/
+**/.claude/
+skills-lock.json
+**/skills-lock.json
