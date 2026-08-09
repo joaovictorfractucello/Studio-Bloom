@@ -17,7 +17,7 @@ export class AuthController {
                 return res.status(400).json({
                     message: "Dados inválidos",
                     errors: parsed.error.issues,
-                })
+                })   
             }
 
             const user = await register(parsed.data)
