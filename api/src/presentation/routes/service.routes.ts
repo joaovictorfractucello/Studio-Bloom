@@ -7,7 +7,17 @@ import { AuthRequest } from "../../shared/types/auth-request"
 const serviceRoutes = Router()
 const serviceController = new ServiceController()
 
-serviceRoutes.get("/", (req, res) => serviceController.list(req, res))
+serviceRoutes.get("/", (req, res, next) => {
+    if (req.query.all === "true") {
+      return authMiddleware(req as unknown as AuthRequest, res, () => {
+        requireRole("ADMIN")(req as unknown as AuthRequest, res, () => {
+          serviceController.list(req, res)
+        })
+      })
+    }
+  
+    return serviceController.list(req, res)
+  })
 
 serviceRoutes.post(
   "/",
